@@ -1,0 +1,79 @@
+CakePHP
+
+Criar Tabelas no Plural
+
+
+//Model TipoImovel
+create table tipo_imoveis
+(
+id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+descricao VARCHAR(70) NOT NULL,
+inativo tinyint(1) not null default value 0,
+INDEX (`descricao`)
+)
+
+//Model SituacaoImovel
+create table situacoes_imoveis
+(
+id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+descricao VARCHAR(70) NOT NULL,
+inativo tinyint(1) not null default 0,
+INDEX (`descricao`)
+)ENGINE=InnoDB;
+
+create table estados
+(
+id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome_estado VARCHAR(70) NOT NULL,
+inativo tinyint(1) not null default 0,
+INDEX (nome_estado)
+)ENGINE=InnoDB;
+
+
+create table cidades
+(
+id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome_cidade VARCHAR(70) NOT NULL,
+estado_id INT( 10 ) NOT NULL,
+inativo tinyint(1) not null default 0,
+INDEX (`nome_cidade`),
+CONSTRAINT FOREIGN KEY (estado_id) REFERENCES estados (id)
+)ENGINE=InnoDB;
+
+
+create table bairros
+(
+id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome_bairro VARCHAR(70) NOT NULL,
+cidade_id INT( 10 ) NOT NULL,
+inativo tinyint(1) not null default 0,
+INDEX (`nome_bairro`),
+CONSTRAINT FOREIGN KEY (cidade_id) REFERENCES cidades (id)
+)ENGINE=InnoDB;
+
+
+create table imoveis
+(
+id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+preco DOUBLE( 10,4 ) NOT NULL,
+quartos INT( 10 ) NOT NULL,
+tipo_imovel_id INT( 10 ) NOT NULL,
+situacao_imovel_id INT( 10 ) NOT NULL,
+suites  INT( 10 ) NOT NULL,
+vagas_garagem INT( 10 ) NOT NULL,
+banheiros  INT( 10 ) NOT NULL,
+area_construida  DOUBLE( 10,4 ) NOT NULL,
+bairro_id INT( 10 ) NOT NULL,
+descricao text NOT NULL,
+inativo tinyint(1) not null default 0,
+CONSTRAINT FOREIGN KEY (bairro_id) REFERENCES bairros (id),
+CONSTRAINT FOREIGN KEY (tipo_imovel_id) REFERENCES tipo_imoveis (id),
+CONSTRAINT FOREIGN KEY (situacao_imovel_id) REFERENCES situacao_imoveis (id)
+)ENGINE=InnoDB;
+
+
+
+
+
+
+
