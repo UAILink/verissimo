@@ -46,6 +46,23 @@ $this->set('title_for_layout', 'Home');
 				</div>
 				<aside class="ym-g33 ym-gr">
 					<div class="ym-gbox-right ym-clearfix">
+						
+						<h3>Fazer Login</h3>
+						<p style="font-size: smaller">Já é um usuário cadastrado? Entre aqui e tenha acesso a área restrita.</p>
+						<form name="frmLogin" class="ym-form ym-full box ">
+						    <div class="ym-fbox-text">
+                              <label for="txtusuario">Nome:</label>
+                              <input type="text" name="usuario" id="txtusuario" size="20" />
+                            </div>
+                            <div class="ym-fbox-text">
+                              <label for="txtpass">Email</label>
+                              <input type="password" name="password" id="txtpass" size="20" />
+                            </div>
+                            <div class="ym-fbox-button">
+                                <input type="button" class="ym-button" value="Entrar" id="submit" name="Entrar" />          
+                            </div>					
+						</form>
+						
 						<h3>Cadastre-se!</h3>
 						<p style="font-size: smaller">Usuários cadastrados recebem em primeira mão novidades sobre novos imóveis a venda 1 semana antes de estarem disponíveis para usuários não cadastrados. Faça parte desse grupo, cadastre-se agora!</p>
 						
@@ -66,21 +83,7 @@ $this->set('title_for_layout', 'Home');
                                 <input type="button" class="ym-button" value="Cadastrar" id="submit" name="Cadastrar" />          
                             </div>				
 						</form>
-						<h3>Fazer Login</h3>
-						<p style="font-size: smaller">Já é um usuário cadastrado? Entre aqui e tenha acesso a área restrita.</p>
-						<form name="frmLogin" class="ym-form ym-full box ">
-						    <div class="ym-fbox-text">
-                              <label for="txtusuario">Nome:</label>
-                              <input type="text" name="usuario" id="txtusuario" size="20" />
-                            </div>
-                            <div class="ym-fbox-text">
-                              <label for="txtpass">Email</label>
-                              <input type="password" name="password" id="txtpass" size="20" />
-                            </div>
-                            <div class="ym-fbox-button">
-                                <input type="button" class="ym-button" value="Entrar" id="submit" name="Entrar" />          
-                            </div>					
-						</form>
+						
 					</div>
 				</aside>
 			</section>

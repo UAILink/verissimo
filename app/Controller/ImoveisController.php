@@ -18,15 +18,39 @@ class ImoveisController extends AppController {
 		$this->Imovel->recursive = 2;
 		$imoveis = $this->paginate();
 		if ($this->request->is('requested')) {
-            return $imoveis;
+            return $imoveis;            
         }else{
     		$this->set('imoveis', $imoveis);
     	}
 	}
 	
 	
-	public function pesquisar() {
-		$this->index();		
+	public function pesquisar() {		
+		$this->Imovel->recursive = 2;
+		
+		/**
+			@FIXE-ME
+			Por algum problema o php ou cake esta trocando "ponto" por "undescore" nos nomes dos campos em request->data			
+		 */
+		$data = array();		
+		foreach($this->request->data as $key => $value){			
+			$data["Imovel.$key"] = $value;
+		}		
+		debug($data);
+		$conditions = array_intersect_key($data, array( 'Imovel.tipo_imovel_id'=>1, 
+													    'Imovel.situacao_imovel_id'=>1,  
+														'Imovel.estado_id'=>1, 
+														'Imovel.cidade_id'=>1, 
+														'Imovel.bairro_id'=>1));				
+		
+		$imoveis = $this->paginate('Imovel', $conditions );
+		
+		if ($this->request->is('requested')) {
+            return $imoveis;
+            $this->set('imoveis', $imoveis);
+        }else{
+    		$this->set('imoveis', $imoveis);
+    	}	
 	}
 	
 	
@@ -80,7 +104,9 @@ class ImoveisController extends AppController {
 		$tipoImoveis = $this->Imovel->TipoImovel->find('list');
 		$situacaoImoveis = $this->Imovel->SituacaoImovel->find('list');
 		$bairros = $this->Imovel->Bairro->find('list');
-		$this->set(compact('tipoImoveis', 'situacaoImoveis', 'bairros'));
+		$cidades = $this->Imovel->Cidade->find('list');
+		$estados = $this->Imovel->Estado->find('list');
+		$this->set(compact('tipoImoveis', 'situacaoImoveis', 'bairros', 'cidades', 'estados'));
 	}
 
 /**

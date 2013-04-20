@@ -1,4 +1,48 @@
-
+<?php 
+$this->Html->scriptStart();
+    $js = $this->Js;    
+            
+    $cidadesUrl = $this->Html->url(
+                            array(
+                                'controller'=>'/cidades', 
+                                'action'=>'index',                                 
+                                'ext'=>'json'),
+                            true
+                   );
+    $js->get('#ImovelEstadoId')->event(
+        'change',
+        "   var id = this.value;
+            $.getJSON('$cidadesUrl?estado_id='+id, function(data){
+                     $('#ImovelCidadeId').html('');         
+                     $.each(data, function(key, val) {
+                         $('#ImovelCidadeId').append('<option value='+val.Cidade.id+'>'+val.Cidade.nome_cidade+'</option>');
+                     });    
+                }            
+            );            
+        "
+    );
+    
+    $bairrosUrl = $this->Html->url(
+                            array(
+                                'controller'=>'/bairros', 
+                                'action'=>'index',                                 
+                                'ext'=>'json'),
+                            true
+                   );
+    $js->get('#ImovelCidadeId')->event(
+        'change',
+        "   var id = this.value;
+            $.getJSON('$bairrosUrl?cidade_id='+id, function(data){
+                     $('#ImovelBairroId').html('');         
+                     $.each(data, function(key, val) {
+                         $('#ImovelBairroId').append('<option value='+val.Bairro.id+'>'+val.Bairro.nome_bairro+'</option>');
+                     });    
+                }            
+            );            
+        "
+     );      
+$this->Html->scriptEnd();
+?>
 <div class="ym-column">
     <div class="ym-col1" >   
     
@@ -20,14 +64,16 @@
 	        
 		        <h6 class="ym-fbox-heading"><?php echo __('Dados Imovel'); ?></h6>
         	<?php
-		echo $this->Form->input('preco');
-		echo $this->Form->input('quartos');
+		echo $this->Form->input('preco', array('alt'=>'decimal', 'type' => 'text'));
+		echo $this->Form->input('quartos', array('alt'=>'integer', 'type' => 'number'));
 		echo $this->Form->input('tipo_imovel_id');
 		echo $this->Form->input('situacao_imovel_id');
-		echo $this->Form->input('suites');
-		echo $this->Form->input('vagas_garagem');
-		echo $this->Form->input('banheiros');
-		echo $this->Form->input('area_construida');
+		echo $this->Form->input('suites', array('alt'=>'integer', 'type' => 'number'));
+		echo $this->Form->input('vagas_garagem', array('alt'=>'integer', 'type' => 'number'));
+		echo $this->Form->input('banheiros', array('alt'=>'integer', 'type' => 'number'));
+		echo $this->Form->input('area_construida', array('alt'=>'integer', 'type' => 'text'));
+		echo $this->Form->input('estado_id');
+		echo $this->Form->input('cidade_id');
 		echo $this->Form->input('bairro_id');
 		echo $this->Form->input('descricao');
 	?>

@@ -137,7 +137,22 @@ class Imovel extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Cidade' => array(
+			'className' => 'Cidade',
+			'foreignKey' => 'cidade_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Estado' => array(
+			'className' => 'Estado',
+			'foreignKey' => 'estado_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
+			
 	);
 
 }

@@ -63,8 +63,10 @@ $pesquisarUrl = $this->Html->url(
 
 
 <article class="ym-box">
-    <h3><?php echo $titulo ?></h3>					        
+    <h3><?php echo $titulo ?></h3>		
+    			        
     <form name="frmPesquisa" action="<?php echo $pesquisarUrl ?>" method="POST" class="ym-form ym-full linearize-form box">
+    
     <h5>Encontre o imóvel dos seus sonhos, faça uma pesquisa!</h5>
     
     <?php if(isset($display) && $display == "form" ): ?>
@@ -72,7 +74,7 @@ $pesquisarUrl = $this->Html->url(
     
                 <div class=" ym-fbox-select">
                   <label for="TipoImovel">Tipo:</label>                                    
-                  <select id="TipoImovel" name="TipoImovel" id="combotipoimovel" >
+                  <select id="TipoImovel" name="tipo_imovel_id" id="combotipoimovel" >
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($tipos as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -80,7 +82,7 @@ $pesquisarUrl = $this->Html->url(
 
                 <div class=" ym-fbox-select">
                   <label for="SituacaoImovel">Situação:</label>
-                  <select name="SituacaoImovel" id="combotipoimovel" size="1">
+                  <select name="situacao_imovel_id" id="combotipoimovel" size="1">
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($situacoes as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -88,7 +90,7 @@ $pesquisarUrl = $this->Html->url(
             
                 <div class=" ym-fbox-select">
                   <label for="Estado">Estado:</label>
-                  <select id="Estado" name="Estado" size="1">
+                  <select id="Estado" name="estado_id" size="1">
                   <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                   <?php foreach($estados as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -96,7 +98,7 @@ $pesquisarUrl = $this->Html->url(
            
                 <div class=" ym-fbox-select">
                   <label for="Cidade">Cidade:</label>
-                  <select name="Cidade" id="Cidade" size="1">
+                  <select name="cidade_id" id="Cidade" size="1">
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($cidades as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -105,7 +107,7 @@ $pesquisarUrl = $this->Html->url(
  
                 <div class=" ym-fbox-select">
                   <label for="Bairro">Bairro:</label>
-                  <select id="Bairro" name="Bairro" size="1">
+                  <select id="Bairro" name="bairro_id" size="1">
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($bairros as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -116,7 +118,7 @@ $pesquisarUrl = $this->Html->url(
             <div class="ym-g20 ym-gl">
                 <div class="ym-gbox ym-fbox-select">
                   <label for="TipoImovel">Tipo:</label>                                    
-                  <select id="TipoImovel" name="TipoImovel" id="combotipoimovel" >
+                  <select id="TipoImovel" name="tipo_Imovel_id" id="combotipoimovel" >
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($tipos as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -125,7 +127,7 @@ $pesquisarUrl = $this->Html->url(
             <div class="ym-g20 ym-gl">
                 <div class="ym-gbox ym-fbox-select">
                   <label for="SituacaoImovel">Situação:</label>
-                  <select name="SituacaoImovel" id="combotipoimovel" size="1">
+                  <select name="situacao_imovel_id" id="combotipoimovel" size="1">
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($situacoes as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -134,7 +136,7 @@ $pesquisarUrl = $this->Html->url(
             <div class="ym-g20 ym-gl">
                 <div class="ym-gbox ym-fbox-select">
                   <label for="Estado">Estado:</label>
-                  <select id="Estado" name="Estado" size="1">
+                  <select id="Estado" name="estado_id" size="1">
                   <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                   <?php foreach($estados as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -143,7 +145,7 @@ $pesquisarUrl = $this->Html->url(
             <div class="ym-g20 ym-gl">
                 <div class="ym-gbox ym-fbox-select">
                   <label for="Cidade">Cidade:</label>
-                  <select name="Cidade" id="Cidade" size="1">
+                  <select name="cidade_id" id="Cidade" size="1">
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($cidades as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  
@@ -152,7 +154,7 @@ $pesquisarUrl = $this->Html->url(
             <div class="ym-g20 ym-gr">
                 <div class="ym-gbox ym-fbox-select">
                   <label for="Bairro">Bairro:</label>
-                  <select id="Bairro" name="Bairro" size="1">
+                  <select id="Bairro" name="bairro_id" size="1">
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($bairros as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  

@@ -1,4 +1,8 @@
-<?php $imoveis = $this->requestAction('imoveis/index/sort:created/direction:asc/limit:20'); ?>
+<?php 
+if(!isset($imoveis)){
+	$imoveis = $this->requestAction('imoveis/index/sort:created/direction:asc/limit:20'); 
+}
+?>
 
 <article>
     <h3><?php echo $titulo ?></h3>

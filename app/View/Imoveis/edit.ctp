@@ -10,33 +10,33 @@ $this->Html->scriptStart();
                                 'ext'=>'json'),
                             true
                    );
-    $js->get('#ImovelEstado')->event(
+    $js->get('#ImovelEstadoId')->event(
         'change',
         "   var id = this.value;
             $.getJSON('$cidadesUrl?estado_id='+id, function(data){
-                     $('#ImovelCidade').html('');         
+                     $('#ImovelCidadeId').html('');         
                      $.each(data, function(key, val) {
-                         $('#ImovelCidade').append('<option value='+val.Cidade.id+'>'+val.Cidade.nome_cidade+'</option>');
+                         $('#ImovelCidadeId').append('<option value='+val.Cidade.id+'>'+val.Cidade.nome_cidade+'</option>');
                      });    
                 }            
             );            
         "
     );
     
-    $bairosUrl = $this->Html->url(
+    $bairrosUrl = $this->Html->url(
                             array(
                                 'controller'=>'/bairros', 
                                 'action'=>'index',                                 
                                 'ext'=>'json'),
                             true
                    );
-    $js->get('#ImovelBairro')->event(
+    $js->get('#ImovelCidadeId')->event(
         'change',
         "   var id = this.value;
             $.getJSON('$bairrosUrl?cidade_id='+id, function(data){
-                     $('#ImovelBairro').html('');         
+                     $('#ImovelBairroId').html('');         
                      $.each(data, function(key, val) {
-                         $('#ImovelBairro').append('<option value='+val.Bairro.id+'>'+val.Bairro.nome_cidade+'</option>');
+                         $('#ImovelBairroId').append('<option value='+val.Bairro.id+'>'+val.Bairro.nome_bairro+'</option>');
                      });    
                 }            
             );            
@@ -75,8 +75,8 @@ $this->Html->scriptEnd();
 		echo $this->Form->input('vagas_garagem', array('alt'=>'integer', 'type' => 'number'));
 		echo $this->Form->input('banheiros', array('alt'=>'integer', 'type' => 'number'));
 		echo $this->Form->input('area_construida', array('alt'=>'integer', 'type' => 'text'));
-        echo $this->Form->input('estado', $estados);
-        echo $this->Form->input('cidade', $cidades);
+        echo $this->Form->input('estado_id');
+        echo $this->Form->input('cidade_id');
 		echo $this->Form->input('bairro_id');
 		echo $this->Form->input('descricao');
 	?>

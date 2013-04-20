@@ -69,6 +69,17 @@
           jQuery(function($) {
             $('input[type="text"]').setMask();
             $('input[type="number"]').setMask();   
+
+            $(document).on({
+                ajaxStart: function() { 
+                    $(this).addClass("loading"); 
+                },
+                ajaxStop: function() { 
+                    $(this).removeClass("loading"); 
+                }    
+            });
+
+            
           });
     </script>
     
@@ -120,6 +131,8 @@
 		</div>
 	</div>
 </footer>
+
+<div class="modal"><!-- Place at bottom of page --></div>
 
 <!-- full skip link functionality in webkit browsers -->
 
