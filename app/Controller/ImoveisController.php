@@ -8,6 +8,8 @@ App::uses('File', 'Utility');
  * @property Imovel $Imovel
  */
 class ImoveisController extends AppController {
+	
+	public $helpers = array('GoogleMap');
 
 /**
  * index method
@@ -36,7 +38,7 @@ class ImoveisController extends AppController {
 		foreach($this->request->data as $key => $value){			
 			$data["Imovel.$key"] = $value;
 		}		
-		debug($data);
+		
 		$conditions = array_intersect_key($data, array( 'Imovel.tipo_imovel_id'=>1, 
 													    'Imovel.situacao_imovel_id'=>1,  
 														'Imovel.estado_id'=>1, 

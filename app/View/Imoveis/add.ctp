@@ -75,6 +75,10 @@ $this->Html->scriptEnd();
 		echo $this->Form->input('estado_id');
 		echo $this->Form->input('cidade_id');
 		echo $this->Form->input('bairro_id');
+		echo $this->Form->input('logradouro');
+		echo $this->Form->input('numero', array('alt'=>'integer', 'type' => 'text'));
+		echo $this->Form->input('complemento');
+		echo $this->Form->input('cep', array('alt'=>'cep', 'type' => 'text'));
 		echo $this->Form->input('descricao');
 	?>
 	    

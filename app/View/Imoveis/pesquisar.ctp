@@ -1,6 +1,3 @@
-
-
-
 <div class="ym-grid">
     <div class="ym-g33 ym-gl">
         <div class="ym-gbox">

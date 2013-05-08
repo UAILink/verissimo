@@ -1,3 +1,17 @@
+<?php 
+
+$this->Html->script('http://maps.google.com/maps/api/js?key=AIzaSyBGT79kf9cJhBhqJGIZDHehUQ-3t7uH33g&sensor=true', false); 
+
+$pesquisarUrl = $this->Html->url(
+		array(
+				'controller'=>'/imoveis',
+				'action'=>'pesquisar'
+		),
+		true
+);
+
+?>
+
 <script>
 // Can also be used with $(document).ready()
 $(window).load(function() {
@@ -5,6 +19,23 @@ $(window).load(function() {
     animation: "slide",
     controlNav: "thumbnails"
   });
+
+  $('#linkFiltroBairro').on('click', function(){
+	  $('#frmFiltroRapidoBairro').submit();
+  });
+
+  $('#linkFiltroCidade').on('click', function(){
+	  $('#frmFiltroRapidoCidade').submit();
+  });
+
+  $('#linkFiltroIguais').on('click', function(){
+	  $('#frmFiltroRapidoIguais').submit();
+  });
+
+  $('#linkFiltroProximo').on('click', function(){
+	  $('#frmFiltroRapidoProximo').submit();
+  });
+  
 });
 </script>
 
@@ -32,11 +63,23 @@ $(window).load(function() {
            <a href="#" class="ym-button ym-email" style="width: 15em">Enviar Por Email</a> <br/>
            
            <h5>Filtro Rápido:</h5>
-           
-           <a href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Neste Bairro</a> <br/>
-           <a href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Nesta Cidade</a> <br/>
-           <a href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Iguais</a> <br/>
-           <a href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Próximo</a> <br/>
+           <form id="frmFiltroRapidoBairro" action="<?php echo $pesquisarUrl; ?>" method="post">
+           		<input type="hidden" name="bairro_id" value="<?php echo $imovel['Imovel']['bairro_id']; ?>" />
+           		<a  id="linkFiltroBairro" href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Neste Bairro</a> <br/>
+           </form>
+           <form id="frmFiltroRapidoCidade" action="<?php echo $pesquisarUrl; ?>" method="post">
+           		<input type="hidden" name="cidade_id" value="<?php echo $imovel['Imovel']['cidade_id']?>" />
+           		<a id="linkFiltroCidade" href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Nesta Cidade</a> <br/>
+           </form>
+           <form id="frmFiltroRapidoIguais" action="<?php echo $pesquisarUrl; ?>" method="post">
+           		<input type="hidden" name="cidade_id" value="<?php echo $imovel['Imovel']['cidade_id']?>" />
+           		<input type="hidden" name="tipo_imovel_id" value="<?php echo $imovel['TipoImovel']['id']?>" />           		
+           		<a id="linkFiltroIguais" href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Iguais</a> <br/>
+           </form>
+           <form id="frmFiltroRapidoProximo" action="<?php echo $pesquisarUrl; ?>" method="post">
+           		<input type="hidden" name="cidade_id" value="<?php echo $imovel['Imovel']['cidade_id']?>" />
+           		<a id="linkFiltroProximo" href="#" class="ym-button ym-add" style="width: 15em">Ver Imóveis Próximo</a> <br/>
+           </form>
            
         </div>
     </div>
@@ -104,12 +147,26 @@ $(window).load(function() {
 			    <?php echo h($imovel['Imovel']['area_construida']); ?>
 			    &nbsp;
 		    </td>
-		    </tr>		<tr>			<td><?php echo __('Bairro'); ?></td>
+		    </tr>		
+		    <tr>			<td><?php echo __('Bairro'); ?></td>
 			    <td>
 			    <?php echo $this->Html->link($imovel['Bairro']['nome_bairro'], array('controller' => 'bairros', 'action' => 'view', $imovel['Bairro']['id'])); ?>
 			    &nbsp;
 		    </td>
 		    </tr>		
+		    <tr>
+		    	<td><?php echo __('Logradouro'); ?></td>
+			    <td>
+			    <?php echo h($imovel['Imovel']['logradouro']); ?>
+			    &nbsp;
+		    </td>
+		    <tr>
+		    	<td><?php echo __('Numero'); ?></td>
+			    <td>
+			    <?php echo h($imovel['Imovel']['numero']); ?>
+			    &nbsp;
+		    </td>
+		    </tr>
 		    <tr>
 		    <td  colspan="2">
     			<strong><?php echo __('Descrição'); ?></strong><br/>
@@ -120,8 +177,33 @@ $(window).load(function() {
 		    </tbody>	
 	    </table>	
 	    <br/>
-	    <iframe width="360" height="360" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?f=q&amp;source=s_q&amp;hl=pt-BR&amp;geocode=&amp;q=rua+bar%C3%A3o+homem+de+melo&amp;aq=&amp;sll=-18.577962,-45.451757&amp;sspn=9.46728,15.073242&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Bar%C3%A3o+Homem+de+Melo+-+Nova+Su%C3%ADssa,+Belo+Horizonte+-+Minas+Gerais,+30460-015&amp;ll=-19.935027,-43.973808&amp;spn=0.024206,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.br/maps?f=q&amp;source=embed&amp;hl=pt-BR&amp;geocode=&amp;q=rua+bar%C3%A3o+homem+de+melo&amp;aq=&amp;sll=-18.577962,-45.451757&amp;sspn=9.46728,15.073242&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Bar%C3%A3o+Homem+de+Melo+-+Nova+Su%C3%ADssa,+Belo+Horizonte+-+Minas+Gerais,+30460-015&amp;ll=-19.935027,-43.973808&amp;spn=0.024206,0.025749&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">Exibir mapa ampliado</a></small>
-           
+	    
+	    <!-- GOOGLE MAPS -->       
+	    <?PHP 
+	    
+	    // Override any of the following default options to customize your map
+	    $map_options = array(
+	    		'id' => 'map_canvas',
+	    		'width' => '350px',
+	    		'height' => '400px',
+	    		'style' => '',
+	    		'zoom' => 16,
+	    		'type' => 'ROADMAP',
+	    		'custom' => null,
+	    		'localize' => false,	  
+	    		'address' => $imovel['Imovel']['logradouro']. ' '. $imovel['Imovel']['numero']. ', '. $imovel['Bairro']['nome_bairro']. ', '. $imovel['Bairro']['Cidade']['nome_cidade'],
+	    		'marker' => true,
+	    		'markerTitle' => 'Clique para ver detalhes',
+	    		'markerIcon' => 'http://google-maps-icons.googlecode.com/files/home.png',
+	    		'markerShadow' => 'http://google-maps-icons.googlecode.com/files/shadow.png',
+	    		'infoWindow' => true,
+	    		'windowText' => '<strong>Endereço do Imóvel</strong>: ' . $imovel['Imovel']['logradouro']. ' '. $imovel['Imovel']['numero']. ', '. $imovel['Bairro']['nome_bairro']. ', '. $imovel['Bairro']['Cidade']['nome_cidade']
+	    );
+	    
+	    echo $this->GoogleMap->map($map_options); 
+	    ?>
+	    
+	               
     </div>
     </div>
     

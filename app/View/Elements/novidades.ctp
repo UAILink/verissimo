@@ -23,7 +23,8 @@ if(!isset($imoveis)){
             true
     );
 
-    foreach( $imoveis as $imovel){        
+    foreach( $imoveis as $imovel){    
+    	    
         $i++;        
         $rec = 
             '<img src="/imobiliariaverissimo/img/imoveis/thumb_imovel'. $imovel['Imovel']['id'] .'_capa.jpg"/>'.
@@ -42,11 +43,11 @@ if(!isset($imoveis)){
         }             
     } 
     
-    if($i < 4) $data[] = $row;
+    if(sizeof($data) > 0 && $i < 4) $data[] = $row;
     
-    ?>
-       
-    <?php echo $this->Html->tableCells($data); ?>
+    echo $this->Html->tableCells($data);
+    
+    ?>         
                         
     </table>
 </article>
