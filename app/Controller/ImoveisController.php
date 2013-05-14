@@ -37,14 +37,16 @@ class ImoveisController extends AppController {
 		$data = array();		
 		foreach($this->request->data as $key => $value){			
 			$data["Imovel.$key"] = $value;
-		}		
-		
-		$conditions = array_intersect_key($data, array( 'Imovel.tipo_imovel_id'=>1, 
-													    'Imovel.situacao_imovel_id'=>1,  
-														'Imovel.estado_id'=>1, 
-														'Imovel.cidade_id'=>1, 
-														'Imovel.bairro_id'=>1));				
-		
+		}			
+
+		$conditions = array_intersect_key($data, array( 'Imovel.tipo_imovel_id'=>-1, 
+													    'Imovel.situacao_imovel_id'=>-1,  
+														'Imovel.estado_id'=>-1, 
+														'Imovel.cidade_id'=>-1, 
+														'Imovel.bairro_id'=>-1));				
+		//removemos todos os itens -1												
+	    array_unique($conditions);
+		//if(sizeof($conditions) == 0) $conditions = array('Imovel.cidade_id'=>1);
 		$imoveis = $this->paginate('Imovel', $conditions );
 		
 		if ($this->request->is('requested')) {

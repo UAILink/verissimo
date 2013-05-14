@@ -1,4 +1,5 @@
 <?php 
+
 if(!isset($imoveis)){
 	$imoveis = $this->requestAction('imoveis/index/sort:created/direction:asc/limit:20'); 
 }
@@ -11,6 +12,7 @@ if(!isset($imoveis)){
     <?php 
     
     $data = array();    
+    
     $i = 0;
     $row = array();
     $x = 0;
@@ -23,8 +25,8 @@ if(!isset($imoveis)){
             true
     );
 
-    foreach( $imoveis as $imovel){    
-    	    
+    foreach( $imoveis as $imovel){   
+                	    
         $i++;        
         $rec = 
             '<img src="/imobiliariaverissimo/img/imoveis/thumb_imovel'. $imovel['Imovel']['id'] .'_capa.jpg"/>'.
@@ -35,17 +37,19 @@ if(!isset($imoveis)){
             '<a href="#" class="ym-button ym-like">Gostei</a>';
         
         $row[] = $rec;
-        
+                
         if($i==4){
+        
             $data[] = $row;
             $i = 0;
             $row = array();
         }             
-    } 
-    
-    if(sizeof($data) > 0 && $i < 4) $data[] = $row;
-    
-    echo $this->Html->tableCells($data);
+    }   
+
+    if(sizeof($row)>0){
+        if($i < 4) $data[] = $row;
+        echo $this->Html->tableCells($data);
+    }
     
     ?>         
                         
