@@ -162,7 +162,7 @@ $pesquisarUrl = $this->Html->url(
             </div>				
         </div>	
         
-        <? endif; ?>    
+        <?php endif; ?>    
         
         <input type="submit" class="ym-button ym-add" value="Ver Imóveis" id="submit" style="width: 10em" />          
         
