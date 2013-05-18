@@ -142,6 +142,39 @@ class SiteURLHelper extends AppHelper {
 	
 	}
 	
+	public function userAdd(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/users',
+						'action'=>'addVisitante'
+				),
+				true
+		);
+	
+	}
+	
+	public function userLogin(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/users',
+						'action'=>'login'
+				),
+				true
+		);
+	
+	}
+	
+	public function userLogout(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/users',
+						'action'=>'logout'
+				),
+				true
+		);
+	
+	}
+	
 }
 	
 	
