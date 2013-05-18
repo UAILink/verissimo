@@ -3,11 +3,11 @@
     <div class="ym-col1" >   
     
     
-    <h4 class="ym-fbox-heading"><?php echo __('Incluir Estado'); ?></h4>
+    <h4 class="ym-fbox-heading"><?php echo __('Incluir User'); ?></h4>
     
-            <div class="estados form ym-cbox">
+            <div class="useres form ym-cbox">
         <div class="ym-form ym-inline">
-        <?php echo $this->Form->create('Estado', array(
+        <?php echo $this->Form->create('User', array(
         'inputDefaults' => array(     
             'div'   => 'ym-fbox-text',
             # define error defaults for the form
@@ -18,10 +18,13 @@
         )
     ));?>
 	        
-		        <h6 class="ym-fbox-heading"><?php echo __('Dados Estado'); ?></h6>
+		        <h6 class="ym-fbox-heading"><?php echo __('Dados User'); ?></h6>
         	<?php
-		echo $this->Form->input('nome_estado');
-		echo $this->Form->input('sigla');
+		echo $this->Form->input('username');
+		echo $this->Form->input('password');
+		echo $this->Form->input('role');
+		echo $this->Form->input('nome');
+		echo $this->Form->input('email');
 	?>
 	    
 	        <div class="ym-fbox-button">
@@ -42,9 +45,7 @@
 	        <h4><?php echo __('Ações'); ?></h4>
 	 
 
-        		        <?php echo $this->Html->link(__('Listar Estados'), array('action' => 'index'), array('class'=>'ym-button'));?>        <?php echo __('<h6>Cidades</h6>'); ?>		<?php echo $this->Html->link(__('Listar Cidades'), array('controller' => 'cidades', 'action' => 'index'), array('class'=>'ym-button')); ?> 
-		<?php echo $this->Html->link(__('Novo Cidade'), array('controller' => 'cidades', 'action' => 'add'), array('class'=>'ym-button')); ?> 
-	 
+        		        <?php echo $this->Html->link(__('Listar Useres'), array('action' => 'index'), array('class'=>'ym-button'));?>        	 
         </div>
     
     

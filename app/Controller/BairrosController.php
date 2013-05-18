@@ -6,6 +6,32 @@ App::uses('AppController', 'Controller');
  * @property Bairro $Bairro
  */
 class BairrosController extends AppController {
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('listar');
+	}
+	
+	public function isAuthorized($user = null) {
+	
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true;
+		}
+		if (in_array($this->action, array('edit', 'delete', 'post', 'index', 'add'))) {
+			// Only admins can access this functions
+			// Admin can access every action
+			if (isset($user['role']) && $user['role'] === 'admin') {
+				return true;
+			}
+		}
+	
+		// Default deny
+		return false;
+	}
+	
+	public function listar(){
+		return $this->index();		
+	}
 
 
 /**

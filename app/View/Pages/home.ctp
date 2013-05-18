@@ -36,9 +36,9 @@ $this->set('title_for_layout', 'Home');
 					
 					    <?php 
 					    
-					    echo $this->element('euquero', array ( "titulo" => "Eu Quero!")); 
+					   echo $this->element('euquero', array ( "titulo" => "Eu Quero!")); 
 					    
-					    echo $this->element('novidades', array ( "titulo" => "Novidades"));
+					   echo $this->element('novidades', array ( "titulo" => "Novidades"));
 					    
 					    ?>					    			    
 					      					

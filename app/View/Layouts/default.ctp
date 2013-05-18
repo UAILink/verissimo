@@ -98,7 +98,7 @@
 	<li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
 </ul>
 
-<header>
+<header class="topo">
 	<div class="ym-wrapper">
 		<div class="ym-wbox">
 			<h1>Imobiliária Veríssimo</h1>

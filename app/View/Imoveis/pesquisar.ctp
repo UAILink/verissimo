@@ -11,7 +11,7 @@
     </div>
     <div class="ym-g66 ym-gr">
         <div class="ym-gbox">
-            <?php echo $this->element('novidades', array ( "titulo" => "Imóveis Encontrados")); ?>            
+            <?php echo $this->element('novidades', array ( "imoveis" => $imoveis,  "titulo" => "Imóveis Encontrados")); ?>            
         </div>
     </div>
 </div>
