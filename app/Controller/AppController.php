@@ -34,8 +34,31 @@ App::uses('SiteURLHelper', 'View/Helper');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-
-        public $components = array('RequestHandler', 'Session');
+        
+        public $components = array(
+        		'RequestHandler',
+        		'Session',
+        		'Auth' => array(
+        				'loginRedirect' => array('controller' => 'imoveis', 'action' => 'pesquisar'),
+        				'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home'),
+        				'authorize' => array('Controller')
+        		)
+        );
+        
         public $helpers = array('Js' => array('Jquery'), 'Formatacao', 'SiteURL');
+        
+        public function beforeFilter() {
+        	$this->Auth->allow( 'display', 'pesquisar');
+        	if($this->Auth->loggedIn()){
+        		$this->set("user_name", $this->Auth->user('nome'). ' ' . $this->Auth->user('sobrenome'));
+        		$this->set("user_email", $this->Auth->user('email'));
+        		$this->set("user_login", $this->Auth->user('username'));
+        
+        	}
+        }
+        
+        public function loggedIn(){
+        	return $this->Auth->loggedIn();
+        }
 
 }

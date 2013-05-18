@@ -45,11 +45,11 @@ if(!isset($imoveis)){
             $row = array();
         }             
     }   
-
+    
     if(sizeof($row)>0){
-        if($i < 4) $data[] = $row;
-        echo $this->Html->tableCells($data);
+        if($i < 4) $data[] = $row;        
     }
+    echo $this->Html->tableCells($data);
     
     ?>         
                         

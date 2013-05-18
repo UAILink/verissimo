@@ -8,6 +8,34 @@ App::uses('AppController', 'Controller');
 class TipoImoveisController extends AppController {
 
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('getTipoImoveis');
+	}
+	
+	public function isAuthorized($user = null) {
+	
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true;
+		}
+		
+		if (in_array($this->action, array('edit', 'delete', 'post', 'index', 'add'))) {
+			// Only admins can access this functions
+			// Admin can access every action
+			if (isset($user['role']) && $user['role'] === 'admin') {
+				return true;
+			}
+		}
+	
+		// Default deny
+		return false;
+	}
+	
+	public function getTipoImoveis(){
+		$this->index();
+	}
+	
+	
 /**
  * index method
  *

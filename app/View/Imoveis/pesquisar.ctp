@@ -1,4 +1,4 @@
-<?php echo $this->element('sql_dump'); ?>
+<?php //echo $this->element('sql_dump'); ?>
 
 <div class="ym-grid">
     <div class="ym-g33 ym-gl">
@@ -11,7 +11,7 @@
     </div>
     <div class="ym-g66 ym-gr">
         <div class="ym-gbox">
-            <?php echo $this->element('novidades', array ( "titulo" => "Imóveis Encontrados")); ?>            
+            <?php echo $this->element('novidades', array ( "imoveis" => $imoveis,  "titulo" => "Imóveis Encontrados")); ?>            
         </div>
     </div>
 </div>

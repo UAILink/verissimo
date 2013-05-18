@@ -118,7 +118,7 @@ $pesquisarUrl = $this->Html->url(
             <div class="ym-g20 ym-gl">
                 <div class="ym-gbox ym-fbox-select">
                   <label for="TipoImovel">Tipo:</label>                                    
-                  <select id="TipoImovel" name="tipo_Imovel_id" id="combotipoimovel" >
+                  <select id="TipoImovel" name="tipo_imovel_id" id="combotipoimovel" >
                     <option value="0" selected="selected" disabled="disabled">Indiferente</option>
                     <?php foreach($tipos as $key => $value) echo '<option value="'.$key.'">'.$value.'</option>';  ?>
                   </select>  

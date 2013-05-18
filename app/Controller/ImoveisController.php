@@ -10,6 +10,31 @@ App::uses('File', 'Utility');
 class ImoveisController extends AppController {
 	
 	public $helpers = array('GoogleMap');
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('pesquisar', 'novidades', 'view');
+	}
+	
+	public function isAuthorized($user = null) {	
+		
+		// Only admins can access admin functions
+		if (isset($this->request->params['admin'])) {
+			return (bool)($user['role'] === 'admin');
+		}
+		
+		if (in_array($this->action, array('edit', 'delete', 'post', 'index', 'add'))) {
+			// Only admins can access this functions
+			// Admin can access every action
+			if (isset($user['role']) && $user['role'] === 'admin') {
+				return true;
+			}
+		}
+	
+		// Default deny
+		return false;
+	}
+	
 
 /**
  * index method
@@ -47,6 +72,7 @@ class ImoveisController extends AppController {
 		//removemos todos os itens -1												
 	    array_unique($conditions);
 		//if(sizeof($conditions) == 0) $conditions = array('Imovel.cidade_id'=>1);
+	    
 		$imoveis = $this->paginate('Imovel', $conditions );
 		
 		if ($this->request->is('requested')) {

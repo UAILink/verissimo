@@ -7,6 +7,7 @@
 	    $sobrelink = ($page == 'sobre')? "<strong>Quem Somos?</strong>" :$this->Html->link('<span>Quem Somos?</span>', $this->SiteURL->sobre(),array('escape' => false));
 	    $pesquisarlink = ($page == 'pesquisar')? "<strong>Imóveis</strong>" :$this->Html->link('<span>Imóveis</span>', $this->SiteURL->pesquisarImoveis(),array('escape' => false));
 	    $contatolink = ($page == 'contato')? "<strong>Contato</strong>" :$this->Html->link('<span>Contato</span>', $this->SiteURL->contato(),array('escape' => false));
+	    $Adminlink = ($page == 'contato')? "<strong>Administrar Site</strong>" :$this->Html->link('<span>Administrar Site</span>', $this->SiteURL->Administrar(),array('escape' => false));
 	    
 	 ?>
 	
@@ -14,4 +15,7 @@
 	<li <?php if($page == 'sobre') echo 'class="active"' ?> > <?php echo $sobrelink?> </li>
 	<li <?php if($page == 'pesquisar') echo 'class="active"'?> > <?php echo $pesquisarlink?></li>
 	<li <?php if($page == 'contato') echo 'class="active"' ?> > <?php echo $contatolink?></li>
+	<?php if(isset($user_name)):?>
+	<li <?php if($page == 'administrar') echo 'class="active"' ?> > <?php echo $Adminlink?></li>
+	<?php endif;?>
 </ul>

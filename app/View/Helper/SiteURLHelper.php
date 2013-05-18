@@ -76,6 +76,71 @@ class SiteURLHelper extends AppHelper {
 	
 	}
 	
+	public function Imoveis(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/imoveis',
+						'action'=>'index'
+				),
+				true
+		);
+	
+	}
+	
+	public function Bairros(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/bairros',
+						'action'=>'index'
+				),
+				true
+		);
+	
+	}
+	
+	public function TipoImoveis(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/tipoimoveis',
+						'action'=>'index'
+				),
+				true
+		);
+	
+	}
+	
+	public function SituacaoImoveis(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/situacaoimoveis',
+						'action'=>'index'
+				),
+				true
+		);
+	
+	}
+	
+	public function Usuarios(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/users',
+						'action'=>'index'
+				),
+				true
+		);
+	
+	}
+	
+	public function Administrar(){
+		return $this->Html->url(
+				array(
+						'controller'=>'/Administracao',
+						'action'=>'index'
+				),
+				true
+		);
+	
+	}
 	
 }
 	

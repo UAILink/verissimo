@@ -2,6 +2,15 @@
     font-size: smaller;
 }
 
+header.topo {
+	background: none;
+	color: #ccc;
+	padding: 1.5em;
+	background-image: url("../img/imobiliariaBackground.gif");	
+	height: 200px;
+	
+}
+
 nav .ym-hlist ul li a:hover {
     color: #fff;
     background: #666;
