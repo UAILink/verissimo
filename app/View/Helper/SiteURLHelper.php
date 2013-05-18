@@ -101,7 +101,7 @@ class SiteURLHelper extends AppHelper {
 	public function TipoImoveis(){
 		return $this->Html->url(
 				array(
-						'controller'=>'/tipoimoveis',
+						'controller'=>'/tipoImoveis',
 						'action'=>'index'
 				),
 				true
@@ -112,7 +112,7 @@ class SiteURLHelper extends AppHelper {
 	public function SituacaoImoveis(){
 		return $this->Html->url(
 				array(
-						'controller'=>'/situacaoimoveis',
+						'controller'=>'/situacaoImoveis',
 						'action'=>'index'
 				),
 				true

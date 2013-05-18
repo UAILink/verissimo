@@ -3,21 +3,20 @@
         <div class="imoveis index ym-cbox">
 	        <h2><?php echo __('Imoveis');?></h2>
 	        <table cellpadding="0" cellspacing="0">
-	        <tr>
-	        		        <th><?php echo $this->Paginator->sort('id');?></th>
-	        		        <th><?php echo $this->Paginator->sort('preco');?></th>	        		        
-	        		        <th><?php echo $this->Paginator->sort('tipo_imovel_id');?></th>
-	        		        <th><?php echo $this->Paginator->sort('situacao_imovel_id');?></th>
+	        <tr>	        		        
+	        		              		        
+	        		        <th><?php echo $this->Paginator->sort('tipo_imovel_id', 'Tipo');?></th>
+	        		        <th><?php echo $this->Paginator->sort('situacao_imovel_id', 'Situacao');?></th>
+	        		        <th><?php echo $this->Paginator->sort('bairro_id', 'Bairro');?></th>
 	        		        <th><?php echo $this->Paginator->sort('quartos');?></th>
 	        		        <th><?php echo $this->Paginator->sort('suites');?></th>	        		        
-	        		        <th><?php echo $this->Paginator->sort('area_construida');?></th>
-	        		        <th><?php echo $this->Paginator->sort('bairro_id');?></th>	        		        
+	        		        <th><?php echo $this->Paginator->sort('area_construida', 'Área');?></th>	        		        
+	        		        <th><?php echo $this->Paginator->sort('preco');?></th>	  	        		        
 	        		        <th class="actions"><?php echo __('Ações');?></th>
 	        </tr>
 	        <?php foreach ($imoveis as $imovel):  ?>
-	<tr>
-		<td><?php echo h($imovel['Imovel']['id']); ?>&nbsp;</td>
-		<td><?php echo h($imovel['Imovel']['preco']); ?>&nbsp;</td>
+	<tr>		
+		
 		
 		<td>
 			<?php echo $this->Html->link($imovel['TipoImovel']['descricao'], array('controller' => 'tipo_imoveis', 'action' => 'view', $imovel['TipoImovel']['id'])); ?>
@@ -25,12 +24,14 @@
 		<td>
 			<?php echo $this->Html->link($imovel['SituacaoImovel']['descricao'], array('controller' => 'situacao_imoveis', 'action' => 'view', $imovel['SituacaoImovel']['id'])); ?>
 		</td>
-		<td><?php echo h($imovel['Imovel']['quartos']); ?>&nbsp;</td>
-		<td><?php echo h($imovel['Imovel']['suites']); ?>&nbsp;</td>
-		<td><?php echo h($imovel['Imovel']['area_construida']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($imovel['Bairro']['nome_bairro'], array('controller' => 'bairros', 'action' => 'view', $imovel['Bairro']['id'])); ?>
 		</td>
+		<td><?php echo h($imovel['Imovel']['quartos']); ?>&nbsp;</td>
+		<td><?php echo h($imovel['Imovel']['suites']); ?>&nbsp;</td>
+		<td><?php echo $this->Formatacao->precisao($imovel['Imovel']['area_construida'],0); ?>m<sup>2</sup>&nbsp;</td>
+		
+		<td><?php echo $this->Formatacao->precisao($imovel['Imovel']['preco'],2); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $imovel['Imovel']['id'])); ?>
 			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $imovel['Imovel']['id'])); ?>

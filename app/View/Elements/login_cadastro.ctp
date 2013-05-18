@@ -30,7 +30,7 @@
 			name="data[User][email]" id="txtemail" size="20" />
 	</div>
 	<div class="ym-fbox-check">
-		<input type="checkbox" name="data[User][novidades]" id="chknovidades"
+		<input type="checkbox" name="data[User][enviar_email]" id="chknovidades"
 			size="20" /> <label for="chknovidades">Quero receber novidades por
 			email</label>
 	</div>

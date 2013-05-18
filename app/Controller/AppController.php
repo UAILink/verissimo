@@ -52,6 +52,7 @@ class AppController extends Controller {
         	if($this->Auth->loggedIn()){
         		$this->set("user_name", $this->Auth->user('nome'). ' ' . $this->Auth->user('sobrenome'));
         		$this->set("user_email", $this->Auth->user('email'));
+        		$this->set("user_role", $this->Auth->user('role'));
         		$this->set("user_login", $this->Auth->user('username'));
         
         	}

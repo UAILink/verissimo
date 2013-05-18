@@ -15,7 +15,7 @@
 	<li <?php if($page == 'sobre') echo 'class="active"' ?> > <?php echo $sobrelink?> </li>
 	<li <?php if($page == 'pesquisar') echo 'class="active"'?> > <?php echo $pesquisarlink?></li>
 	<li <?php if($page == 'contato') echo 'class="active"' ?> > <?php echo $contatolink?></li>
-	<?php if(isset($user_name)):?>
+	<?php if(isset($user_name) && $user_role === 'admin'):?>
 	<li <?php if($page == 'administrar') echo 'class="active"' ?> > <?php echo $Adminlink?></li>
 	<?php endif;?>
 </ul>

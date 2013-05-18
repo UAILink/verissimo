@@ -128,7 +128,7 @@
 <footer>
 	<div class="ym-wrapper">
 		<div class="ym-wbox">
-			<p>© Company 2012 &ndash; Layout based on <a href="http://www.yaml.de">YAML</a></p>
+			<p>© Imobiliaria Veríssimo 2012 &ndash; Desenvolvido por <a href="http://www.uailink.com.br">UAILink Marketing Digital</a></p>
 		</div>
 	</div>
 </footer>

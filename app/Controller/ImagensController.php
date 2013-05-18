@@ -9,6 +9,19 @@ App::uses('File', 'Utility');
  * @property Imovel $Imovel
  */
 class ImagensController extends AppController {
+	
+	public function beforeFilter() {
+		parent::beforeFilter();		
+	}
+	
+	public function isAuthorized($user = null) {	
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true;
+		}	
+		// Default deny
+		return false;
+	}
+	
 	/**
      * lista imagens do imovel 
      *

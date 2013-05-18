@@ -1,3 +1,7 @@
+.actions a.ym-button{
+	width: 10em;
+}
+
 .imoveis.view table {
     font-size: smaller;
 }
