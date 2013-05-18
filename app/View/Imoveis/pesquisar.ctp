@@ -1,4 +1,4 @@
-<?php echo $this->element('sql_dump'); ?>
+<?php //echo $this->element('sql_dump'); ?>
 
 <div class="ym-grid">
     <div class="ym-g33 ym-gl">

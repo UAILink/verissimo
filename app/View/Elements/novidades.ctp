@@ -44,10 +44,13 @@ if(!isset($imoveis)){
             $i = 0;
             $row = array();
         }             
-    }   
-
+    }  
+    
     if(sizeof($row)>0){
-        if($i < 4) $data[] = $row;
+        if($i < 4) $data[] = $row;        
+    }
+    
+    if(sizeof($data)>0){
         echo $this->Html->tableCells($data);
     }
     

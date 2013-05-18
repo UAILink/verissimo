@@ -20,6 +20,8 @@
 <?php
 $content = explode("\n", $content);
 
+echo $this->Html->image('imoveis/'.$image) ;
+
 foreach ($content as $line):
 	echo '<p> ' . $line . "</p>\n";
 endforeach;

@@ -22,8 +22,9 @@
 	<title><?php echo $title_for_layout;?></title>
 </head>
 <body>
-	<?php echo $this->fetch('content');?>
+	<?php echo $this->fetch('content');?>   
 
-	<p>This email was sent using the <a href="http://cakephp.org">CakePHP Framework</a></p>
+	<p>Este email foi enviado através do site <a href="http://www.imobiliariaverissimo.com.br">Imobiliária Veríssimo</a></p>
+	<p>Caso não deseja mais receber emails deste tipo favor nos comunicar. <a href="http://www.imobiliariaverissimo.com.br/emails/sair">Clique aqui para deixar de receber emails de Imobiliária Veríssimo</a></p>
 </body>
 </html>
