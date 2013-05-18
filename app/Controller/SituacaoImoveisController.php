@@ -9,7 +9,7 @@ class SituacaoImoveisController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('getSituacaoImoveis');
+		$this->Auth->allow('listar');
 	}
 	
 	public function isAuthorized($user = null) {
@@ -30,8 +30,8 @@ class SituacaoImoveisController extends AppController {
 		return false;
 	}
 	
-	public function getSituacaoImoveis(){
-		$this->index();
+	public function listar(){
+		return $this->index();
 	}
 
 /**

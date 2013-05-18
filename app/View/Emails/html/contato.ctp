@@ -17,10 +17,17 @@
  */
 ?>
 <h1>Veríssimo Imobiliária</h1>
-<?php
-$content = explode("\n", $content);
 
-foreach ($content as $line):
-	echo '<p> ' . $line . "</p>\n";
-endforeach;
-?>
+<p>O usuário abaixo lhe enviou essa mensagem pelo site da Imobiliária Veríssimo.</p>
+<p>Sugerimos que você responda imediatamente este email informando que a mensagem já está sendo analisada pelo setor responsável.</p>
+
+<p>Usuário........................: <?php echo $nome ?></p>
+<p>Telefone.......................: <?php echo $telefone ?></p>
+<p>Email..........................: <?php echo $email ?></p>
+<p>Receber NewsLetter?............: <?php echo $newsletter ?></p>
+
+Mensagem
+
+<p><?php echo $mensagem ?></p>
+
+

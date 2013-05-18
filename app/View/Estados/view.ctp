@@ -16,12 +16,21 @@
 			<?php echo h($estado['Estado']['id']); ?>
 			&nbsp;
 		</td>
-		</tr>		<tr>			<td><?php echo __('Nome Estado'); ?></td>
+		</tr>		
+		<tr>			<td><?php echo __('Nome Estado'); ?></td>
 			<td>
 			<?php echo h($estado['Estado']['nome_estado']); ?>
 			&nbsp;
 		</td>
-		</tr>		<tr>			<td><?php echo __('Inativo'); ?></td>
+		</tr>
+		<tr>
+			<td><?php echo __('Sigla'); ?></td>
+			<td>
+			<?php echo h($estado['Estado']['sigla']); ?>
+			&nbsp;
+			</td>
+		</tr>
+				<tr>			<td><?php echo __('Inativo'); ?></td>
 			<td>
 			<?php echo h($estado['Estado']['inativo']); ?>
 			&nbsp;

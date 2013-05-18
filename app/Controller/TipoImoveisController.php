@@ -10,7 +10,7 @@ class TipoImoveisController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('getTipoImoveis');
+		$this->Auth->allow('listar');
 	}
 	
 	public function isAuthorized($user = null) {
@@ -31,8 +31,8 @@ class TipoImoveisController extends AppController {
 		return false;
 	}
 	
-	public function getTipoImoveis(){
-		$this->index();
+	public function listar(){
+		return $this->index();
 	}
 	
 	

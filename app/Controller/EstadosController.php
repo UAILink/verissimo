@@ -9,7 +9,7 @@ class EstadosController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('getEstados');
+		$this->Auth->allow('listar', 'getEstadoPadrao');
 	}
 	
 	public function isAuthorized($user = null) {
@@ -29,8 +29,8 @@ class EstadosController extends AppController {
 		return false;
 	}
 	
-	public function getEstados(){
-		$this->index();
+	public function listar(){
+		return $this->index();
 	}
 
 /**

@@ -22,6 +22,7 @@
         	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('nome_estado');
+		echo $this->Form->input('sigla');
 	?>
 	    
 	        <div class="ym-fbox-button">

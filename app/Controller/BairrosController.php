@@ -9,7 +9,7 @@ class BairrosController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('getBairros');
+		$this->Auth->allow('listar');
 	}
 	
 	public function isAuthorized($user = null) {
@@ -29,8 +29,8 @@ class BairrosController extends AppController {
 		return false;
 	}
 	
-	public function getBairros(){
-		$this->index();		
+	public function listar(){
+		return $this->index();		
 	}
 
 

@@ -10,6 +10,30 @@ $pesquisarUrl = $this->Html->url(
 		true
 );
 
+$emailUrl = $this->Html->url(
+		array(
+				'controller'=>'/imoveis',
+				'action'=>'sendEmail'
+		),
+		true
+);
+
+$likeUrl = $this->Html->url(
+		array(
+				'controller'=>'/imoveis',
+				'action'=>'like'
+		),
+		true
+);
+
+$contatoUrl = $this->Html->url(
+		array(
+				'controller'=>'/imoveis',
+				'action'=>'contato'
+		),
+		true
+);
+
 ?>
 
 <script>
@@ -36,6 +60,49 @@ $(window).load(function() {
 	  $('#frmFiltroRapidoProximo').submit();
   });
   
+  $('#btn-send-email').on('click', function(e){
+      e.preventDefault();
+      
+	  $.ajax({
+          type: "POST",
+          url: "<?php echo $emailUrl ; ?>",
+          data: { mailTo: $('#txt_mail_to').val(), mailName: $('#txt_mail_name').val(), fileName: "<?php echo $files[0]; ?>"}
+            }).done(function( msg ) {
+              
+            });
+     $('#myModal').closeModal();
+  });
+  
+  
+   $('#btn-send-like').on('click', function(e){
+      e.preventDefault();
+      
+	  $.ajax({
+          type: "POST",
+          url: "<?php echo $likeUrl ; ?>",
+          data: { imovelId: <?php echo $imovel['Imovel']['id']?>}
+            }).done(function( msg ) {
+              
+            });
+     $('#likeModal').closeModal();
+  });
+  
+  $('#btnEnviarContato').on('click', function(e){
+      e.preventDefault();
+      $('#contatoModal').reveal();
+	  $.ajax({
+          type: "POST",
+          url: "<?php echo $contatoUrl ; ?>",
+          data: $('#frmContato').serialize()
+          }).done(function( msg ) {
+              
+      });
+      $('#frmContato')[0].reset();
+  });
+  
+  
+  
+  
 });
 </script>
 
@@ -49,7 +116,7 @@ $(window).load(function() {
            <span>Código do Imóvel: <?php echo $imovel['Imovel']['id'] ?></span>
            <div class="flexslider" >
               <ul class="slides">      
-              <?php foreach($files as $value) {?>  
+              <?php foreach($files as $value) { ?>  
                 <li data-thumb="<?php echo $this->request->webroot . 'img/imoveis/thumb_'.$value ?>">
                   <?php echo $this->Html->image('imoveis/'.$value) ?>
                 </li>
@@ -59,9 +126,9 @@ $(window).load(function() {
            
            <h5>Mais Opções:</h5>
            
-           <a href="#" class="ym-button ym-like" style="width: 15em">Gostei</a> <br/>
-           <a href="#" class="ym-button ym-email" style="width: 15em">Enviar Por Email</a> <br/>
-           
+           <a href="#" data-reveal-id="likeModal" id="sendLike" class="ym-button ym-like" style="width: 15em">Gostei</a> <br/>
+           <a href="#" data-reveal-id="myModal" id="sendEmail" class="ym-button ym-email" style="width: 15em">Enviar Por Email</a> <br/>
+                      
            <h5>Filtro Rápido:</h5>
            <form id="frmFiltroRapidoBairro" action="<?php echo $pesquisarUrl; ?>" method="post">
            		<input type="hidden" name="bairro_id" value="<?php echo $imovel['Imovel']['bairro_id']; ?>" />
@@ -210,7 +277,7 @@ $(window).load(function() {
     <div class="ym-g33 ym-gr" >
         <div class="imoveis view ym-gbox">
             
-			<form name="frmCadastro" class="ym-form ym-full box ">
+			<form name="frmContato" id="frmContato" class="ym-form ym-full box ">
 			    <h5>Entre em contato!</h5>
 			    <div class="ym-fbox-text">
                   <label for="txtnome">Nome:</label>
@@ -218,22 +285,22 @@ $(window).load(function() {
                 </div>
                 <div class="ym-fbox-text">
                   <label for="txtemail">Email</label>
-                  <input type="text" name="email" id="txtemail" size="20" />
+                  <input type="text" name="email" id="txtemail" size="20" alt="email"/>
                 </div>
                 <div class="ym-fbox-text">
                   <label for="txtemail">Telefone</label>
-                  <input type="text" name="email" id="txtemail" size="20" />
+                  <input type="text" name="telefone" id="txtemail" size="20" alt="phone" />
                 </div>
                 <div class="ym-fbox-text">
                   <label for="txtemail">Mensagem</label>
-                  <textarea name="your-id" id="your-id" cols="30" rows="7"></textarea>
+                  <textarea name="mensagem" id="txtMensagem" cols="30" rows="7"></textarea>
                 </div>
                 <div class="ym-fbox-check">                              
-                  <input type="checkbox" name="novidades" id="chknovidades" size="20" />
+                  <input type="checkbox" name="newsletter" id="chknovidades" size="20" value="SIM" />
                   <label for="chknovidades">Quero receber novidades por email</label>
                 </div>		
                 <div class="ym-fbox-button">
-                    <input type="button" class="ym-button ym-email" value="Entrar em Contato" id="submit" name="Contato" />          
+                    <input type="button" data-reveal-id="contatoModal" class="ym-button ym-email" value="Entrar em Contato" id="btnEnviarContato" name="Contato" />          
                 </div>				
 			</form>
         
@@ -243,7 +310,41 @@ $(window).load(function() {
 </div>
 </div>
 
+<div id="myModal" class="reveal-modal ym-form ym-full box">           
+   <a class="close-reveal-modal">&#215;</a> 
+    <h3>Enviar por email</h3>
+    <p>Os dados deste imóvel serão enviados para o email abaixo:</p>                
+    <div class="ym-fbox-text">
+      <label for="txt-mail-name">Informe Seu Nome:</label>
+      <input type="text" name="email-name" id="txt_mail_name" size="20" />
+    </div>               	
+   	<div class="ym-fbox-text">
+      <label for="txtnome">Enviar para o Email:</label>
+      <input type="text" name="email-to" id="txt_mail_to" size="20" />
+    </div>               	
+   	<div class="ym-fbox-button">
+        <input type="button" class="ym-button ym-email" value="Enviar Email" id="btn-send-email" name="btnSendEmail" />          
+    </div>	          
+</div>
 
+<div id="likeModal" class="reveal-modal ym-form ym-full box">           
+   <a class="close-reveal-modal">&#215;</a> 
+    <h3>Anotação realizada</h3>
+    <p>Obrigado por nos informar sobre sua preferência.</p>                
+    <p>Vamos usar essas informações para sugerir outros imóveis mais dentro do perfil dos imóveis que você gosta.</p>
+    <p>Sempre que você ver um imóvel que ache interessante clique no botão 'Gostei'.</p>                                        
+   	<div class="ym-fbox-button">
+        <input type="button" class="ym-button ym-email" value="Enviar" id="btn-send-like" name="btnSendLike" />          
+    </div>	          
+</div>
+
+<div id="contatoModal" class="reveal-modal ym-form ym-full box">           
+   <a class="close-reveal-modal">&#215;</a> 
+    <h3>Contato realizado</h3>
+    <p>Obrigado pelo seu interesse.</p>                
+    <p>Seu email foi enviado para o setor responsável e logo logo será respondido.</p>
+    <p>Você tambem pode entrar em contato conosco sempre que desejar pelo email <a href="mailto:contato@imobiliariaverissimo.com.br">contato@imobiliariaverissimo.com.br</a></p>                                           	
+</div>
 
 
 

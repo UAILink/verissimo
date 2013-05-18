@@ -10,7 +10,7 @@ class CidadesController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('getCidades');
+		$this->Auth->allow('listar');
 	}
 	
 	public function isAuthorized($user = null) {
@@ -30,8 +30,8 @@ class CidadesController extends AppController {
 		return false;
 	}
 	
-	public function getCidades(){
-		$this->index();
+	public function listar(){
+		return $this->index();
 	}
 	
 /**

@@ -21,6 +21,7 @@
 		        <h6 class="ym-fbox-heading"><?php echo __('Dados Estado'); ?></h6>
         	<?php
 		echo $this->Form->input('nome_estado');
+		echo $this->Form->input('sigla');
 	?>
 	    
 	        <div class="ym-fbox-button">

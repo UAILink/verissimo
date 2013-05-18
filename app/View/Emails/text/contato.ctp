@@ -11,16 +11,22 @@
  *
  * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
- * @package       Cake.View.Emails.html
+ * @package       Cake.View.Emails.text
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 ?>
-<h1>Veríssimo Imobiliária</h1>
-<?php
-$content = explode("\n", $content);
+Veríssimo Imobiliária
+O usuário abaixo lhe enviou essa mensagem pelo site da Imobiliária Veríssimo.
+Sugerimos que você responda imediatamente este email informando que a mensagem já está sendo analisada pelo setor responsável.
 
-foreach ($content as $line):
-	echo '<p> ' . $line . "</p>\n";
-endforeach;
-?>
+Usuário........................: <?php echo $nome ?>
+Telefone.......................: <?php echo $telefone ?>
+Email..........................: <?php echo $email ?>
+Receber NewsLetter?............: <?php echo $newsletter ?>
+
+Mensagem
+
+<?php echo $mensagem ?>
+
+

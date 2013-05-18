@@ -13,6 +13,7 @@
 	<tr>
 		<td><?php echo h($estado['Estado']['id']); ?>&nbsp;</td>
 		<td><?php echo h($estado['Estado']['nome_estado']); ?>&nbsp;</td>
+		<td><?php echo h($estado['Estado']['sigla']); ?>&nbsp;</td>
 		<td><?php echo h($estado['Estado']['inativo']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $estado['Estado']['id'])); ?>

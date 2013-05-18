@@ -1,3 +1,4 @@
+
 <?php 
 $this->Html->scriptStart();
     $js = $this->Js;    
@@ -5,7 +6,7 @@ $this->Html->scriptStart();
     $cidadesUrl = $this->Html->url(
                             array(
                                 'controller'=>'/cidades', 
-                                'action'=>'index',                                 
+                                'action'=>'listar',                                 
                                 'ext'=>'json'),
                             true
                    );
@@ -25,7 +26,7 @@ $this->Html->scriptStart();
     $bairrosUrl = $this->Html->url(
                             array(
                                 'controller'=>'/bairros', 
-                                'action'=>'index',                                 
+                                'action'=>'listar',                                 
                                 'ext'=>'json'),
                             true
                    );
@@ -43,12 +44,12 @@ $this->Html->scriptStart();
      );   
 $this->Html->scriptEnd();
 
-$tipos = $this->requestAction('tipo_imoveis/index/sort:created/direction:asc/limit:20');
-$situacoes = $this->requestAction('situacao_imoveis/index/sort:created/direction:asc/limit:20'); 
-$estados = $this->requestAction('estados/index/sort:created/direction:asc/limit:20');
+$tipos = $this->requestAction('tipo_imoveis/listar/sort:created/direction:asc/limit:20');
+$situacoes = $this->requestAction('situacao_imoveis/listar/sort:created/direction:asc/limit:20'); 
+$estados = $this->requestAction('estados/listar/sort:created/direction:asc/limit:20');
 $estadoPadrao = $this->requestAction('estados/getEstadoPadrao/sort:created/direction:asc/limit:20');  
-$cidades = $this->requestAction('cidades/index/sort:created/direction:asc/limit:20?estado_id='.$estadoPadrao['Estado']['id']);
-$bairros = $this->requestAction('bairros/index/sort:created/direction:asc/limit:20');    
+$cidades = $this->requestAction('cidades/listar/sort:created/direction:asc/limit:20?estado_id='.$estadoPadrao['Estado']['id']);
+$bairros = $this->requestAction('bairros/listar/sort:created/direction:asc/limit:20');    
 
 $pesquisarUrl = $this->Html->url(
             array(
@@ -57,7 +58,6 @@ $pesquisarUrl = $this->Html->url(
             ),
             true
    );
-
 
 ?>
 
@@ -168,3 +168,6 @@ $pesquisarUrl = $this->Html->url(
         
     </form>
 </article> 
+
+
+

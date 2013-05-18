@@ -36,12 +36,13 @@
 		echo $this->Html->css('flexible-columns');
 		echo $this->Html->css('TableCSSCode');
 		echo $this->Html->css('flexslider');
+		echo $this->Html->css('reveal');
 		
 		echo $this->Html->script('jquery-1.8.1.min');
 		echo $this->Html->script('jquery.form');
 		echo $this->Html->script('jquery.flexslider-min');
 		echo $this->Html->script('jquery.meio.mask.min');
-		
+		echo $this->Html->script('jquery.reveal');		
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

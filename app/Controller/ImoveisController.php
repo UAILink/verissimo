@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');   
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Imoveis Controller
  *
@@ -9,11 +10,12 @@ App::uses('File', 'Utility');
  */
 class ImoveisController extends AppController {
 	
+		
 	public $helpers = array('GoogleMap');
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('pesquisar', 'novidades', 'view');
+		$this->Auth->allow('listar','pesquisar', 'novidades', 'view');
 	}
 	
 	public function isAuthorized($user = null) {	
@@ -32,9 +34,20 @@ class ImoveisController extends AppController {
 		}
 	
 		// Default deny
-		return false;
+		return true;
 	}
 	
+	public function listar() {
+		$this->Imovel->recursive = 2;
+		$imoveis = $this->paginate();
+		if ($this->request->is('requested')) {
+			return $imoveis;
+		}else{
+			$this->set('imoveis', $imoveis);
+		}
+	}
+	
+		
 
 /**
  * index method
@@ -49,6 +62,49 @@ class ImoveisController extends AppController {
         }else{
     		$this->set('imoveis', $imoveis);
     	}
+	}
+	
+	public function contato(){
+	    
+	    $nome = $this->request->data['nome'];
+	    $email = $this->request->data['email'];
+	    $telefone = $this->request->data['telefone'];
+	    $mensagem = $this->request->data['mensagem'];
+  	    $newsletter = $this->request->data['newsletter'];
+	    
+	    $Email = new CakeEmail();
+	    $Email->config('gmail');
+	    $Email->viewVars( compact('nome', 'email', 'telefone', 'mensagem', 'newsletter') );
+	    $Email->template('contato', 'interno')
+              ->emailFormat('html')
+              ->from(array('contato@imobiliariaverissimo.com.br' => 'Imobiliaria Verissimo'))
+              ->to('moacsjr@gmail.com')
+              ->subject('[Imobiliária Veríssimo] ' . $nome. ' lhe enviou esta mensagem')
+              ->send($mensagem);
+              
+        $this->render('/Elements/ajaxok');	
+	    
+	   
+	}
+	
+	
+	public function like(){
+	    
+	        $this->render('/Elements/ajaxok');
+    }
+	
+	public function sendEmail(){
+	
+	    $Email = new CakeEmail();
+	    $Email->config('gmail');
+	    $Email->viewVars(array('image' => $this->request->data['fileName']));
+	    $Email->template('imovel', 'default')
+              ->emailFormat('both')
+              ->from(array('contato@imobiliariaverissimo.com.br' => 'Imobiliaria Verissimo'))
+              ->to($this->request->data['mailTo'])
+              ->subject($this->request->data['mailName'] . ' lhe enviou este imóvel')
+              ->send('Olá, parece que '.$this->request->data['mailName'].' acha que você pode gostar do imóvel abaixo.');
+	
 	}
 	
 	
